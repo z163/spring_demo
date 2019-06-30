@@ -12,16 +12,17 @@ import org.apache.commons.beanutils.BeanUtils;
 
 import po.Customer;
 import service.CustomerService;
-import service.CustomerServiceImpl;
+import utils.BeanFactory;
+
 
 public class AddCustomerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	// 调用业务层（面向接口开发）
-	// private CustomerService service = BeanFactory.getCustomerService();
+	private CustomerService service = BeanFactory.getCustomerService();
 	// private CustomerService service = (CustomerService) BeanFactory.getBean("customerService");
 
 	// 这种实现是将Servlet和Service实现类强耦合在一起了，不利于扩展（开闭原则）
-	private CustomerService service = new CustomerServiceImpl();
+	// private CustomerService service = new CustomerServiceImpl();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

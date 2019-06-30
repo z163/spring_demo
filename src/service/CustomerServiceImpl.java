@@ -1,8 +1,8 @@
 package service;
 
 import dao.CustomerDao;
-import dao.JdbcCustomerDaoImpl;
 import po.Customer;
+import utils.BeanFactory;
 
 public class CustomerServiceImpl implements CustomerService {
 
@@ -14,8 +14,10 @@ public class CustomerServiceImpl implements CustomerService {
 	// 解决方案：首先要面向接口编程(只关心接口，不需要关心实现类)
 	// 解决方案：通过工厂设计模式来解决强耦合和开闭原则的问题
 	// private CustomerDao customerDao = new DbUtilsCustomerDaoImpl();
-	private CustomerDao customerDao = new JdbcCustomerDaoImpl();
-	// private CustomerDao customerDao = BeanFactory.getCustomerDao();
+
+	// private CustomerDao customerDao = new JdbcCustomerDaoImpl();
+	private CustomerDao customerDao = BeanFactory.getCustomerDao();
+
 	// private CustomerDao customerDao = (CustomerDao) BeanFactory.getBean("customerDao");
 
 	// 依赖注入的演示
