@@ -1,20 +1,21 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import po.Customer;
 
-public class JdbcCustomerDaoImpl extends JdbcTemplate implements CustomerDao{
+public abstract class JdbcTemplate {
 
-	/*@Override
 	public Integer insert(Customer customer) {
 		System.out.println("JdbcCustomerDaoImpl...");
 		Integer line = null;
 		Connection connection = null;
-		
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
 		try {
 			// 1. 注册驱动
 			Class.forName("com.mysql.jdbc.Driver");
@@ -23,15 +24,10 @@ public class JdbcCustomerDaoImpl extends JdbcTemplate implements CustomerDao{
 			String password = "root";
 			// 2. 获取链接
 			connection = DriverManager.getConnection(url, username, password);
-			// 3. 获取预编译对象
-			// preparedStatement对象要预编译的SQL语句，可以使用?占位符
-			String sql = "INSERT INTO customer (cust_name ,cust_user_name) VALUES (?,?)";
-			statement = connection.prepareStatement(sql);
-			// 设置参数，替换?占位符
-			statement.setString(1, customer.getCustName());
-			statement.setString(2, customer.getCustUserName());
-			// 4. 执行SQL语句
-			line = statement.executeUpdate();
+
+			//statement
+			executeStatement(connection,customer);
+
 			// 5. 处理结果集
 			// 返回值表示影响了几行
 			System.out.println(line);
@@ -65,24 +61,6 @@ public class JdbcCustomerDaoImpl extends JdbcTemplate implements CustomerDao{
 		}
 		return line;
 
-	}*/
-
-	@Override
-	int executeStatement(Connection connection, Object object) throws ClassNotFoundException, SQLException {
-		Customer customer = null;
-		if (object instanceof Customer) {
-			customer = (Customer) object;
-		}
-		PreparedStatement statement = null;
-		ResultSet resultSet = null;
-		// preparedStatement对象要预编译的SQL语句，可以使用?占位符
-		String sql = "INSERT INTO customer (cust_name ,cust_user_name) VALUES (?,?)";
-		statement = connection.prepareStatement(sql);
-		// 设置参数，替换?占位符
-		statement.setString(1, customer.getCustName());
-		statement.setString(2, customer.getCustUserName());
-		// 4. 执行SQL语句
-		return statement.executeUpdate();
 	}
-
+	abstract int executeStatement(Connection connection,Object param)  throws ClassNotFoundException,SQLException;
 }
