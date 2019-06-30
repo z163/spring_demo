@@ -16,9 +16,8 @@ public class CustomerServiceImpl implements CustomerService {
 	// private CustomerDao customerDao = new DbUtilsCustomerDaoImpl();
 
 	// private CustomerDao customerDao = new JdbcCustomerDaoImpl();
-	private CustomerDao customerDao = BeanFactory.getCustomerDao();
-
-	// private CustomerDao customerDao = (CustomerDao) BeanFactory.getBean("customerDao");
+	// private CustomerDao customerDao = BeanFactory.getCustomerDao();
+	private CustomerDao customerDao = (CustomerDao) BeanFactory.getBean("customerDao");
 
 	// 依赖注入的演示
 	/*

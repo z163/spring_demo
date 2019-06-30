@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+	<bean id="customerDao" class="dao.DbUtilsCustomerDaoImpl"></bean>
+	<!-- <bean id="customerDao" class="dao.JdbcCustomerDaoImpl"></bean> -->
+	<bean id="customerService" class="service.CustomerServiceImpl">
+		<property name="" value=""></property>
+	</bean>
+</beans>
