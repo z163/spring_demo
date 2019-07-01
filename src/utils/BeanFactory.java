@@ -30,8 +30,8 @@ public class BeanFactory {
 	 * @return
 	 */
 	public static CustomerService getCustomerService() {
-		// return new CustomerServiceImpl();
-		return (CustomerService) getBean("customerService");
+		return new CustomerServiceImpl();
+		// return (CustomerService) getBean("customerService");
 	}
 
 	/**

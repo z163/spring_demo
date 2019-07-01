@@ -55,10 +55,10 @@ public class C3P0Utils {
 	}
 
 	public static void main(String[] args) throws Exception {
-		// Connection connection = getConnection();
-		// connection.setAutoCommit(false);
-
-		Connection connection = getCurrentConnection();
+		Connection connection = getConnection();
 		connection.setAutoCommit(false);
+
+		//Connection connection = getCurrentConnection();
+		//connection.setAutoCommit(false);
 	}
 }
